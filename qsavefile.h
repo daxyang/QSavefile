@@ -9,7 +9,6 @@
 #include "sqlite3.h"
 #include "qdatetime.h"
 
-//#include "qsockserver.h"
 
 #define   DB_CMD_CALLBACK_NONE    0x00
 #define   DB_CMD_CALLBACK_SELECT  0x01
@@ -49,6 +48,7 @@ public:
     void delete_table();
     void set_savedisk_size(long disk_size_kb);
     void search_recode();
+    void adduser(int user);
 
 private:
     QSlidingWindow *sliding_window;
@@ -82,8 +82,6 @@ private:
     void append_db_list(struct db_cmd_info_t *db_data);
     void delete_db_list(long no);
 
-
-     //QSockserver *tcp_server;
 
 };
 

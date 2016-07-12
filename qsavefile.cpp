@@ -30,10 +30,6 @@ QSavefile::QSavefile()
     head_cmd_list = new struct db_cmd_list_t();
     head_cmd_list->next = NULL;
 
-    //tcp_server = new QSockserver();
-    //tcp_server->start_server();
-
-
 }
 
 void QSavefile::bound(QSlidingWindow *slidingwnd)
@@ -41,6 +37,10 @@ void QSavefile::bound(QSlidingWindow *slidingwnd)
     sliding_window = slidingwnd;
     current_user  = 0;
     save_consume = append_user(SAVE_USER);
+}
+void QSavefile::adduser(int user)
+{
+    save_consume = append_user(user);
 }
 //删附数据及文件
 void QSavefile::delete_table()
