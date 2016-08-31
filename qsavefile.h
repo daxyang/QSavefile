@@ -2,8 +2,10 @@
 #define QSAVEFILE_H
 
 //#include "qsavefile_global.h"
-#include "qslidingwindow.h"
-#include "qslidingwindowconsume.h"
+//#include "qslidingwindow.h"
+//#include "qslidingwindowconsume.h"
+#include "QSlidingWindow.h"
+#include "QSlidingWindowConsume.h"
 #include "pthread.h"
 #include "unistd.h"
 #include "sqlite3.h"

@@ -1,10 +1,29 @@
+ifeq ($(os),macx)
 TARGET=libQSavefile.dylib
+CXX=g++
+else
+TARGET=libQSavefile.so
+CXX=arm-none-linux-gnueabi-g++
+endif
 
 CXXFLAGS= -pipe -O2 -Wall -W -fPIC
+ifeq ($(os),macx)
 LFLAGS = -dynamiclib
-LIBS += -L/usr/local/lib -lQSlidingWindow -lQSlidingWindowConsume -lsqlite3
+else
+LFLAGS = -shared
+endif
+
+
+
 INCLUDEPATH += -I../QSlidingWindow -I../QSlidingWindowConsume
-CXX=g++
+
+ifeq ($(os),macx)
+LIBS += -L/usr/local/lib -lQSlidingWindow -lQSlidingWindowConsume -lsqlite3
+else
+LIBS += -L/usr/local/lib -lQSlidingWindow -lQSlidingWindowConsume
+LIBS += -L/opt/sqlite3/lib -lsqlite3
+INCLUDEPATH += -I/opt/sqlite3/include
+endif
 
 $(TARGET):QSavefile.o
 	$(CXX) $(LFLAGS) -o $(TARGET) QSavefile.o $(LIBS)
