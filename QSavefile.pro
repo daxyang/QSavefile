@@ -38,7 +38,9 @@ INCLUDEPATH += /opt/sqlite3/include
 #macx
 unix:macx{
 INCLUDEPATH += ../QSlidingWindow ../QSlidingWindowConsume
+INCLUDEPATH += /usr/local/include
 LIBS += -L/usr/local/lib -lQSlidingWindow -lQSlidingWindowConsume
+LIBS += -L/usr/local/lib -lsqlite3
 }
 #install
 #mac

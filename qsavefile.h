@@ -1,13 +1,13 @@
 #ifndef QSAVEFILE_H
 #define QSAVEFILE_H
 
-#include "qsavefile_global.h"
+//#include "qsavefile_global.h"
 #include "qslidingwindow.h"
 #include "qslidingwindowconsume.h"
 #include "pthread.h"
 #include "unistd.h"
 #include "sqlite3.h"
-#include "qdatetime.h"
+//#include "qdatetime.h"
 
 
 #define   DB_CMD_CALLBACK_NONE    0x00
@@ -19,7 +19,8 @@
 struct db_cmd_info_t
 {
     int no;
-    QDateTime time;
+    //QDateTime time;
+    time_t time;
     long size;
     char path[1024];
 };
@@ -35,7 +36,10 @@ struct db_cmd_callback_t
     struct db_cmd_info_t *data;
     void *pthis;
 };
-class QSAVEFILESHARED_EXPORT QSavefile
+
+
+//class QSAVEFILESHARED_EXPORT QSavefile
+class QSavefile
 {
 
 public:
@@ -70,8 +74,8 @@ private:
     static int select_info(void *param,int ncolumn,char **column_value,char **column_name);
     int time_sec;
 
-    QDateTime start_time,current_time;
-
+    //QDateTime start_time,current_time;
+    time_t start_time,current_time;
     struct db_cmd_list_t *head_cmd_list;
     void append_list(struct db_cmd_info_t *cmd_info);
 
